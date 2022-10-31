@@ -3,14 +3,16 @@ def encrypt():
     file1 = open("data.txt", "r")
     content = file1.read()
 
-    l = len(content)
+    list1 = []
+    encrypt_list = []
 
     list1 = list(content)
-    for i in list1[0 : l]:
-         char = ord(list1[i])
-         char+=1
-         list1 = chr(char)
-    return list1
+    for i in list1:
+         char = ord(i)
+         char+=23
+         encrypt_list.append(char)
+    print(encrypt_list)
+    
 
 def decrypt():
     pass
