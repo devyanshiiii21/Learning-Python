@@ -5,7 +5,7 @@ def encrypt():
 
     list1 = []
     encrypt_list = []
-
+    
     list1 = list(content)
     for i in list1:
          char = ord(i)
@@ -13,7 +13,13 @@ def encrypt():
          encrypt_list.append(char)
     print(encrypt_list)
     
-
+    file2 = open("encrypted_file.txt","w")
+    for j in encrypt_list:
+        word = chr(j)
+        file2.write(word)
+        
+    print(file2)
+  
 def decrypt():
     pass
 
