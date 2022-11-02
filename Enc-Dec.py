@@ -1,31 +1,59 @@
+import os
+
 
 def encrypt():
-    file1 = open("data.txt", "r")
-    content = file1.read()
+    file_path = input('Enter the file path to be encrypted: ')
+    if os.path.exists(file_path):
+        with open("data.txt", "r") as file1:
+            content = file1.read()
 
-    list1 = []
-    encrypt_list = []
-    
-    list1 = list(content)
-    for i in list1:
-         char = ord(i)
-         char+=23
-         encrypt_list.append(char)
-    print(encrypt_list)
-    
-    file2 = open("encrypted_file.txt","w")
-    for j in encrypt_list:
-        word = chr(j)
-        file2.write(word)
+        list1 = []
+        encrypt_list = []
         
-    print(file2)
+        list1 = list(content)
+        for i in list1:
+            char = ord(i)
+            char+=17
+            encrypt_list.append(char)
+        print(encrypt_list)
+        
+        with open("encrypted_file.txt","w") as file2:
+            for j in encrypt_list:
+                word = chr(j)
+                file2.write(word)
+            
+        print(f"Your file is successfully encrypted {file2}")
+    else:
+        print("Wrong file path.")
   
 def decrypt():
-    pass
+    file_path = input("Enter the file path to be decrypted: ")
+    if os.path.exists(file_path):
+        with open(file_path, "r") as file1:
+            content = file1.read()
 
+        list1 = []
+        decrypt_list = []
+        
+        list1 = list(content)
+        for i in list1:
+            char = ord(i)
+            char -= 17
+            decrypt_list.append(char)
+        print(decrypt_list)
+        
+        with open("decrypted_file.txt","w") as file2:
+            for j in decrypt_list:
+                word = chr(j)
+                file2.write(word)
+            
+        print(f"Your file is successfully decrypted {file2}")
+    
+    else:
+        print("Wrong file path.")
 
-print("""Enter 1 to encrypt
-Enter 2 to decrypt
+print("""Enter 1 to encrypt the file
+Enter 2 to decrypt the file
 Enter 3 to exit""")
 ch = input("Enter your choice: ")
 
